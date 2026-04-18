@@ -1,0 +1,158 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 30 20% 45%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 30 20% 45%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 20% 45%;
+
+  --primary: 12 60% 90%; 
+  --primary-foreground: 30 20% 45%;
+
+  --secondary: 12 40% 97%;
+  --secondary-foreground: 30 20% 45%;
+
+  --muted: 12 20% 95%;
+  --muted-foreground: 30 15% 55%;
+
+  --accent: 12 80% 95%;
+  --accent-foreground: 30 20% 45%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 12 20% 90%;
+  --input: 12 20% 90%;
+  --ring: 12 60% 80%;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+
+  --radius: 0px;
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  }
+
+  .text-luxury {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+    color: #8C7B6E;
+  }
+
+  .btn-watercolor {
+    @apply relative overflow-hidden transition-all duration-500 active:scale-95;
+    background-image: url('/attached_assets/MP_Marcela_Puglise_1770617485354.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 
+      0 4px 15px rgba(244, 164, 142, 0.4),
+      inset 0 0 30px rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+
+  .btn-watercolor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(253,226,217,0.7) 0%, rgba(244,164,142,0.6) 100%);
+    mix-blend-mode: overlay;
+  }
+
+  .btn-watercolor:hover {
+    box-shadow: 
+      0 8px 25px rgba(244, 164, 142, 0.6),
+      inset 0 0 40px rgba(255,255,255,0.4);
+    transform: translateY(-3px);
+  }
+
+  .btn-watercolor span, .btn-watercolor * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-luxury {
+    @apply relative overflow-hidden transition-all duration-500 active:scale-95;
+    background: linear-gradient(135deg, #FDE2D9 0%, #F4A48E 100%);
+    box-shadow: 0 10px 20px -5px rgba(244, 164, 142, 0.4);
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 0 15px 30px -5px rgba(244, 164, 142, 0.6);
+    transform: translateY(-2px);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    background-image: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
